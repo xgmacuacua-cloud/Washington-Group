@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado - Washington Group</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow text-center">
+        <h2 class="text-gray-600 mb-2">Resultado para</h2>
+        <h1 class="text-2xl font-bold mb-4" th:text="${avaliacao.nome}"></h1>
+        
+        <div th:class="${avaliacao.resultado == 'Com deficiência' ? 'bg-red-600' : 'bg-green-600'} + ' text-white p-3 rounded-full inline-block px-8 font-bold mb-6'"
+             th:text="${avaliacao.resultado}">
+        </div>
+
+        <div class="flex gap-4 justify-center">
+            <a href="/questionario" class="text-blue-600 hover:underline">Nova Avaliação</a>
+            <a href="/pessoas-identificadas" class="text-blue-600 hover:underline">Ver Lista</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Questionário Washington Group</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow">
+        <h1 class="text-2xl font-bold mb-6">Questionário de Dificuldades Funcionais</h1>
+        <form action="/processar" method="post" class="space-y-6">
+            <div>
+                <label class="block font-bold mb-2">Nome Completo:</label>
+                <input type="text" name="nome" required class="w-full border p-2 rounded">
+            </div>
+            
+            <div th:each="i : ${#numbers.sequence(1, 5)}" class="space-y-2">
+                <p class="font-medium" th:text="${i + '. Pergunta ' + i}"></p>
+                <!-- Aqui entrariam as perguntas reais do WG -->
+                <select name="respostas" class="w-full border p-2 rounded">
+                    <option value="1">Não, nenhuma dificuldade</option>
+                    <option value="2">Sim, alguma dificuldade</option>
+                    <option value="3">Sim, muita dificuldade</option>
+                    <option value="4">Não consegue de forma alguma</option>
+                </select>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded font-bold">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>
